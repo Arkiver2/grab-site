@@ -140,6 +140,9 @@ Options can come before or after the URL.
 
 *	`--ua=STRING`: Send User-Agent: `STRING` instead of pretending to be Firefox on Windows.
 
+*	`--youtube-dl`: Use youtube-dl to download videos. Videos from for example YouTube can be
+	downloaded using youtube-dl.
+
 *	`--no-sitemaps`: don't queue URLs from `sitemap.xml` at the root of the site.
 
 *	`--help`: print help text.
