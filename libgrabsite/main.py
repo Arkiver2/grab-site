@@ -70,6 +70,9 @@ def print_version(ctx, param, value):
 		'--sitemaps (default: true) to queue URLs from sitemap.xml '
 		'at the root of the site, or --no-sitemaps to disable.')
 
+@click.option('--youtube-dl/--no-youtube-dl', default=False,
+	help='--youtube-dl (default: false) to use youtube-dl to download videos from pages.')
+
 @click.option('--version', is_flag=True, callback=print_version,
 	expose_value=False, is_eager=True, help='Print version and exit.')
 
@@ -77,7 +80,7 @@ def print_version(ctx, param, value):
 
 def main(concurrency, concurrent, delay, recursive, offsite_links, igsets,
 ignore_sets, igon, level, page_requisites_level, max_content_length, sitemaps,
-ua, start_url):
+ua, start_url, youtube_dl):
 	span_hosts_allow = "page-requisites,linked-pages"
 	if not offsite_links:
 		span_hosts_allow = "page-requisites"
@@ -158,6 +161,9 @@ ua, start_url):
 		"--span-hosts-allow", span_hosts_allow,
 		"--quiet",
 	]
+	
+	if youtube_dl:
+		args += ["--youtube-dl"]
 
 	if sitemaps:
 		args += ["--sitemaps"]
